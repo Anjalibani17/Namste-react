@@ -1,0 +1,33 @@
+{
+  "name": "anjali",
+  "version": "1.0.0",
+  "description": "this  is reactjs ",
+
+  "scripts": {
+    "start": "parcel index.html",
+    "build":"build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anjalibani17/namaste-react.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "anjali bani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anjalibani17/namaste-react/issues"
+  },
+  "homepage": "https://github.com/Anjalibani17/namaste-react#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+
+}
