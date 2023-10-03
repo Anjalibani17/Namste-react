@@ -1,5 +1,5 @@
 this is react file
-#parcel
+# parcel
 -dev build
 -create local server for us
 -HMR-hot module  replacement (hot realoding)
@@ -16,3 +16,19 @@ this is react file
 -host app on https
 -tree shaking (remove unused code)
 -create different dev and production bundles
+
+# food ordering app
+*- header
+    -logo
+    -nav-Items 
+*- body
+    -search
+    -restaurant container
+        -card
+            -img
+            -star rating,time of delivery,cusine,
+* -footer
+    - contact us
+    -copyright
+    -address link
+
