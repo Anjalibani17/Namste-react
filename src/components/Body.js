@@ -18,8 +18,14 @@ const Body = () => {
     console.log("body");
     const fetchData = async () => {
         try{const data = await fetch(
-            "https://www.swiggy.com/mapi/homepage/getCards?lat=22.3189294&lng=73.1669011"
-        );
+            "https://www.swiggy.com/mapi/homepage/getCards?lat=22.3189294&lng=73.1669011",
+            {
+                headers: {
+                "cache-control": "no-cache",
+                },
+                }
+                );
+        
         if (!data.ok) {
             throw new Error("Network response was not ok");
         }
