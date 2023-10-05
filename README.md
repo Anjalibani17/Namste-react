@@ -32,3 +32,7 @@ this is react file
     -copyright
     -address link
 
+# routing
+-two type of routing 
+    -client side
+    -server side 

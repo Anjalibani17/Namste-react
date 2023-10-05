@@ -2,6 +2,20 @@
     padding: 0;
     margin: 0;
 }
+/*shimmer UI*/
+.shimmer-container
+{
+    display: flex;
+    margin: 5px;
+    flex-wrap: wrap;
+}
+.shimmer-cards
+{
+    width: 200px;
+    height: 350px;
+    background-color: lightgray;
+    margin: 5px;
+}
 /* Default styles for header */
 .header {
     border: 1px solid black;
@@ -28,6 +42,12 @@
     margin: 10px;
     padding: 10px;
 }
+.login-btn
+{   margin: 15px;
+    padding: 0 15px;
+    height: 30px;
+    cursor: pointer;
+}
 
 /* Media query for screens with a maximum width of 768px */
 @media screen and (max-width: 768px) {
@@ -52,35 +72,44 @@
 }
 
 /*body*/
+.filter{
+display: flex;
+}
 .search {
     padding: 10px;
+    height: 30px;
+}
+.inp
+{
+    height: 25px;
+    font-size: 20px;
+}
+.search-btn
+{
+    height: 27px;
+    padding: 5px;
+    font-size: 15px;
 }
 .filterbtn
 {
     padding: 10px;
     cursor: pointer;
 }
-
 .res-container {
     display: flex;
     flex-wrap: wrap;
     margin: 5px;
     
 }
-
 .res-card {
     padding: 5;
     width: 200px;
-
     background-color: antiquewhite;
-
 }
-
 .res-card:hover {
     border: 1px solid black;
     cursor: pointer;
 }
-
 .res-logo {
     width: 100%;
 }
