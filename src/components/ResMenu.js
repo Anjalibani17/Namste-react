@@ -1,21 +1,29 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { useParams } from "react-router-dom";
+import { MENU_URL } from "../utils/constant";
+import useResMenu from "../utils/useResMenu";
 
 const ResMenu = () => {
-    const [menu, setMenu] = useState(null);
-    useEffect(() => {
-        fetchData();
-    }, []);
-    const fetchData = async () => {
-        const data = await fetch(
-            "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.195343&lng=72.885865&restaurantId=766449&catalog_qa=undefined&submitAction=ENTER"
-        );
-        const menuData = await data.json();
-        console.log(menuData);
-        console.log(menuData.data.cards[0].card.card.info.id);
-        // const filterMenu=
-        setMenu(menuData);
-    };
+
+    const { resId } = useParams();
+       // ****here we create custom hooks for api call ****
+    const menu = useResMenu(resId);
+    //second option 
+
+    // const [menu, setMenu] = useState(null);
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
+    // const fetchData = async () => {
+    //     const data = await fetch(MENU_URL+resId);
+    //     const menuData = await data.json();
+    //     console.log(menuData);
+    //     console.log(menuData.data.cards[0].card.card.info.id);
+ 
+    //     setMenu(menuData);
+    // }
+
     if (menu == null) {
         return <Shimmer />;
     } //here we can use ternary operator with compo return but it gives you error bcz initially
@@ -37,8 +45,12 @@ const ResMenu = () => {
                 {cuisines.join(" , ")} - {costForTwoMessage}
             </h3>
             <ul>
-                {itemCards.map((item, index) => (
-                    <li key={index}>{item.card.info.name}</li>
+                {itemCards.map((item) => (
+                    <li key={item.card.info.id}>
+                        {item.card.info.name} -{"  Rs-"}
+                        {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
+
+                    </li>
                 ))}
             </ul>
         </div>

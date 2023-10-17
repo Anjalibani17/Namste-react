@@ -2,6 +2,8 @@ import Restaurantcard from "./Restaurantcard";
 // import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import useOnStatus from "../utils/useOnStatus";
 
 const Body = () => {
     const [listRes, setListRes] = useState([]);
@@ -32,11 +34,7 @@ const Body = () => {
         
         // console.log(data)
         const jsonD = await data.json();
-        // console.log(jsonD);
-        // console.log(
-        //     jsonD.data.success.cards[4].gridWidget.gridElements.infoWithStyle
-        //         .restaurants
-        // );
+      
         //optional chaining
         const finalData =
             jsonD?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
@@ -49,6 +47,11 @@ const Body = () => {
         // Handle the error here, e.g., show an error message to the user.
     }
     };
+    const status=useOnStatus();
+    if(status==false)
+    {
+        return (<h2>you are offline!</h2>)
+    }
     // if(listRes.length==0)
     // {
     //     // return <h2>loading...</h2>;
@@ -96,7 +99,7 @@ const Body = () => {
             <div className="res-container">
                 {/* <Restaurantcard resName="krishna food" cuisine="Gujrati thali" /> */}
                 {filterListRes.map((Restaurant) => (
-                    <Restaurantcard key={Restaurant.info.id} resData={Restaurant} />
+                   <Link key={Restaurant.info.id} to={"/restaurant/"+Restaurant.info.id}> <Restaurantcard  resData={Restaurant} /></Link>
                 ))}
                 {/* above code is return fun */}
                 {/* <Restaurantcard resData={resList[1]} /> */}
