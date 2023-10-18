@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 const useOnStatus =()=>{
-    const [status,setStatus]=useState(true);
+    const [status,setStatus]=useState("true");
     useEffect(()=>{
         window.addEventListener("offline",()=>{
-            setStatus(false);
-        })
+            setStatus("false");
+        });
+        window.addEventListener("online",()=>{
+            setStatus("true");
+        });
 
     },[])
     return status;

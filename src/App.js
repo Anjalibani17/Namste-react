@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,10 +9,13 @@ import ResMenu from "./components/ResMenu";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 import UserClass from "./components/UserClass";
 
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const Grocery = lazy(()=>import("./components/Grocery")); //lazy loading
 const AppLayout = () => {
     return (
-        <div className="app">
+        <div className="">
             <Header />
             <Outlet/> 
              {/* here it will render children and replace outlet with child */}
@@ -44,6 +47,10 @@ const appRouter=createBrowserRouter([
             {
                 path:"/UserClass",
                 element:<UserClass/>
+            },
+            {
+                path:"/Grocery",
+                element:<Suspense fallback={<h2>loading...</h2>}><Grocery/></Suspense>
             }
         ]
         

@@ -20,10 +20,8 @@ const ResMenu = () => {
     //     const menuData = await data.json();
     //     console.log(menuData);
     //     console.log(menuData.data.cards[0].card.card.info.id);
- 
     //     setMenu(menuData);
     // }
-
     if (menu == null) {
         return <Shimmer />;
     } //here we can use ternary operator with compo return but it gives you error bcz initially
@@ -33,23 +31,23 @@ const ResMenu = () => {
     const { itemCards } =
         menu?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
             ?.card;
-
     console.log(
         menu?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
             ?.card
     );
     return (
-        <div className="menu">
-            <h2>{name}</h2>
+        <div className="justify-center text-lg">
+        <div className="font-bold text-3xl">
+        <h2>{name}</h2>
+        </div>
             <h3>
                 {cuisines.join(" , ")} - {costForTwoMessage}
             </h3>
             <ul>
                 {itemCards.map((item) => (
-                    <li key={item.card.info.id}>
+                    <li className="p-2 text-xl justify-center" key={item.card.info.id}>
                         {item.card.info.name} -{"  Rs-"}
                         {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
-
                     </li>
                 ))}
             </ul>
