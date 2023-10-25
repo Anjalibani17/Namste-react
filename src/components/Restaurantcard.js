@@ -27,13 +27,13 @@ const Restaurantcard = (props) => {
     );
 };
 
-//higher ordre component take rescard component as input and return component which  return jsx
+//higher order component take rescard component as input and return component which  return jsx
 //input => Restaurantcard => withpromtedlabel
  export const withLabelResCard=(Restaurantcard)=>{
     
     return (props)=>{
         return(<>
-            <label className="bg-red-700">label </label>
+            <h2 className="bg-red-300 rounded-lg absolute m-2 p-2">promoted </h2>
             <Restaurantcard {...props}/> 
         </>)
     }

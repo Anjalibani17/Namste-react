@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -8,18 +8,32 @@ import Error from "./components/Error";
 import ResMenu from "./components/ResMenu";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 import UserClass from "./components/UserClass";
+import userContext from "./utils/userContext";
 
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const Grocery = lazy(()=>import("./components/Grocery")); //lazy loading
 const AppLayout = () => {
+    const [userName,setUserName]=useState();
+  const{loggedInUser}=useContext(userContext);
+    // useEffect(()=>{
+    //     const data={
+    //         name:"anjali",
+    //     }
+    //     setUserName(data.name)
+        
+    // },[])
+    
     return (
-        <div className="">
+        <userContext.Provider value={{loggedInUser:userName,setUserName}}>
+        {/* here i'm passing setusername fun to body  */}
+        <div className="w-[100%]">
             <Header />
             <Outlet/> 
              {/* here it will render children and replace outlet with child */}
         </div>
+        </userContext.Provider>
     );
 };
 const appRouter=createBrowserRouter([

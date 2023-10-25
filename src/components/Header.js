@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LOGO_URLS } from "../utils/constant";
 import { Link } from "react-router-dom";
 import useOnStatus from "../utils/useOnStatus";
+import userContext from "../utils/userContext";
 const Header = () => {
     const [btnName, setBtnName] = useState("Log In");
     const status = useOnStatus();
+    const {loggedInUser}=useContext(userContext); //we extacct data from usercontext file
+    // console.log(loggedInUser)
     // console.log("refresh");
     return (
-        <div className="flex justify-between bg-orange-300 shadow-lg rounded-lg ">
+        <div className="flex justify-between bg-orange-300 shadow-lg rounded-lg sm:bg-orange-100, w-auto ">
             <div className="p-4 items-center ">
                 <img className="w-40" src={LOGO_URLS} />
             </div>   
@@ -31,6 +34,8 @@ const Header = () => {
                     >
                         {btnName}
                     </button>
+                    <li className="p-4 hover:bg-slate-200 rounded-md">user:{loggedInUser} </li>
+
                 </ul>
             </div>
         </div>

@@ -1,9 +1,10 @@
 import Restaurantcard, { withLabelResCard } from "./Restaurantcard";
 // import resList from "../utils/mockData";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnStatus from "../utils/useOnStatus";
+import userContext from "../utils/userContext";
 
 const Body = () => {
     const [listRes, setListRes] = useState([]);
@@ -12,10 +13,10 @@ const Body = () => {
        contain api data if we filter on it then we can not retive origanl data after filtering it.*/
     const [searchBtn, setSearchBtn] = useState("");
     //here we are passing reslist mock data into use state and then update it
-
+    const {setUserName,loggedInUser}=useContext(userContext);
     //hoc
-    const labelResCard = withLabelResCard(Restaurantcard); //here we pass component to HOC
-
+    const LabelResCard = withLabelResCard(Restaurantcard); //here we pass component to HOC
+   
     useEffect(() => {
         fetchData();
         // console.log("load")
@@ -99,6 +100,8 @@ const Body = () => {
                 >
                     Top rated restaurant
                 </button>
+                {console.log(loggedInUser)}
+                <input placeholder="username" className="p-2 h-8 m-2" value={loggedInUser} onChange={(e)=>{setUserName(e.target.value)}}/>
             </div>
             <div className="flex flex-wrap">
                 {/* <Restaurantcard resName="krishna food" cuisine="Gujrati thali" /> */}
@@ -108,8 +111,8 @@ const Body = () => {
                         to={"/restaurant/" + Restaurant.info.id}
                     >
                         {/* write a logic that if rest promted then it goes to HOC  */}
-                        {Restaurant.promoted ? (
-                            <labelResCard resData={Restaurant} />
+                        {Restaurant.info.promoted ? (
+                            <LabelResCard   resData={Restaurant} />
                         ) : (
                             <Restaurantcard resData={Restaurant} />
                         )}
