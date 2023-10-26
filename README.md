@@ -36,3 +36,13 @@ this is react file
 -two type of routing 
     -client side
     -server side 
+
+# redux toolkit
+    -install @reduxjs/toolkit and react-redux
+    -build our store
+    -connect our store to the app
+    -slice(cart slice)
+    -dispatch action
+    -selector
+    
+

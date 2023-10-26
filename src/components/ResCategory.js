@@ -22,7 +22,7 @@ const ResCategory =({data,showItem,setShowIndex})=>
     </div>
     <div>
     {/* this item card used to print accordian body */}
-       {showItem && <ItemCards className=" hover:bg-orange-300" item={data.itemCards}/>}
+       {showItem && <ItemCards className=" hover:bg-orange-300" items={data.itemCards}/>}
     </div>
     
     </div>

@@ -31,7 +31,7 @@ const ResMenu = () => {
   const { itemCards } =
     menu?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
       ?.card;
-  console.log(menu?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR);
+  // console.log(menu?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR);
   //categories vise menu print
   const categories =
     menu?.data?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -39,7 +39,7 @@ const ResMenu = () => {
         c.card?.card?.["@type"] ==
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-  console.log(categories);
+  //console.log(categories);
   return (
     <div className="text-center text-lg">
       <h2 className="bg-slate-200 font-bold">{name}</h2>

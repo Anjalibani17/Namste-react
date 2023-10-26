@@ -9,6 +9,9 @@ import ResMenu from "./components/ResMenu";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
 import UserClass from "./components/UserClass";
 import userContext from "./utils/userContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 
 
@@ -26,6 +29,9 @@ const AppLayout = () => {
     // },[])
     
     return (
+        /* here we are wrapping redux store into app if we want to provide small portiono of 
+        app uses store so we wrap that component inside provider */
+        <Provider store={appStore}>
         <userContext.Provider value={{loggedInUser:userName,setUserName}}>
         {/* here i'm passing setusername fun to body  */}
         <div className="w-[100%]">
@@ -34,6 +40,7 @@ const AppLayout = () => {
              {/* here it will render children and replace outlet with child */}
         </div>
         </userContext.Provider>
+        </Provider>
     );
 };
 const appRouter=createBrowserRouter([
@@ -65,6 +72,10 @@ const appRouter=createBrowserRouter([
             {
                 path:"/Grocery",
                 element:<Suspense fallback={<h2>loading...</h2>}><Grocery/></Suspense>
+            },
+            {
+                path:"/Cart",
+                element:<Cart/>
             }
         ]
         
